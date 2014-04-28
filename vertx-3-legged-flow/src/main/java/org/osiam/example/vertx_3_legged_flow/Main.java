@@ -42,7 +42,8 @@ public class Main {
         vertx.createHttpServer().requestHandler(new Handler<HttpServerRequest>() {
 
             OsiamConnector oConnector = new OsiamConnector.Builder()
-                    .setEndpoint("http://localhost:8180")
+                    .setAuthServerEndpoint("http://localhost:8080/osiam-auth-server")
+                    .setResourceServerEndpoint("http://localhost:8080/osiam-resource-server")
                     .setClientId("example-client")
                     .setClientSecret("secret")
                     .setClientRedirectUri("http://localhost:5000/oauth2")
