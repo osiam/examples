@@ -25,9 +25,9 @@ package org.osiam.example.vertx_3_legged_flow;
 import java.io.IOException;
 import java.net.URI;
 
-import org.osiam.client.connector.OsiamConnector;
+import org.osiam.client.OsiamConnector;
 import org.osiam.client.oauth.AccessToken;
-import org.osiam.client.oauth.GrantType;
+import org.osiam.client.oauth.Scope;
 import org.osiam.resources.scim.User;
 import org.vertx.java.core.Handler;
 import org.vertx.java.core.MultiMap;
@@ -47,15 +47,13 @@ public class Main {
                     .setClientId("example-client")
                     .setClientSecret("secret")
                     .setClientRedirectUri("http://localhost:5000/oauth2")
-                    .setGrantType(GrantType.AUTHORIZATION_CODE)
-                    .setScope("GET PUT PATCH")
                     .build();
 
             @Override
             public void handle(HttpServerRequest req) {
                 String path = req.path();
                 if (path.equals("/login")) {
-                    URI uri = oConnector.getRedirectLoginUri();
+                    URI uri = oConnector.getAuthorizationUri(Scope.GET);
                     req.response().setStatusCode(301).putHeader("Location", uri.toString()).end();
                 }
                 if (path.equals("/oauth2")) {
