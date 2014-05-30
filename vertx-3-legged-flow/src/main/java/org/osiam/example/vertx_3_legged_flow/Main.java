@@ -63,8 +63,15 @@ public class Main {
                     } else {
                         // the User has granted your rights to his ressources
                         String code = multiMap.get("code");
-                        AccessToken accessToken = oConnector.retrieveAccessToken(code);
-                        User user = oConnector.getCurrentUser(accessToken);
+                        AccessToken accessToken;
+                        User user;
+                        try {
+                            accessToken = oConnector.retrieveAccessToken(code);
+                            user = oConnector.getCurrentUser(accessToken);
+                        } catch (Exception e) {
+                            req.response().setChunked(true).write("An error happened: " + e).end();
+                            return;
+                        }
                         req.response().setChunked(true);
                         req.response().headers().add("Content-Type", "text/html; charset=UTF-8");
                         req.response()
