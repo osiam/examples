@@ -1,7 +1,7 @@
-package org.osiam.addons.selfadministration.plugin.impl;
+package org.osiam.addons.self_administration.plugin.impl;
 
-import org.osiam.addons.selfadministration.plugin.api.CallbackPlugin;
-import org.osiam.addons.selfadministration.plugin.exception.CallbackException;
+import org.osiam.addons.self_administration.plugin_api.CallbackException;
+import org.osiam.addons.self_administration.plugin_api.CallbackPlugin;
 import org.osiam.client.OsiamConnector;
 import org.osiam.client.oauth.AccessToken;
 import org.osiam.client.oauth.Scope;
