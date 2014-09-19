@@ -3,11 +3,10 @@
     xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.osiam.plugins</groupId>
-    <artifactId>addon-self-administration-plugin-example-impl</artifactId>
+    <groupId>org.osiam</groupId>
+    <artifactId>addon-self-administration-plugin-example</artifactId>
     <version>1.1-SNAPSHOT</version>
     <name>Example plugin implementation</name>
-    <packaging>jar</packaging>
 
     <build>
         <plugins>
@@ -40,7 +39,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.osiam.plugins</groupId>
+            <groupId>org.osiam</groupId>
             <artifactId>addon-self-administration-plugin-api</artifactId>
             <version>${project.version}</version>
         </dependency>
