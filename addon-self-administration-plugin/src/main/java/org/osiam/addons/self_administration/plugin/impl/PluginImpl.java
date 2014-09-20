@@ -84,22 +84,22 @@ public class PluginImpl implements CallbackPlugin {
     }
     
     private String getUserName() {
-        return getProperty("osiam.addon-selfadministration.plugin.user.name", "marissa");
+        return getProperty("osiam.addon-self-administration.plugin.user.name", "marissa");
     }
 
     private String getUserPassword() {
-        return getProperty("osiam.addon-selfadministration.plugin.user.password", "koala");
+        return getProperty("osiam.addon-self-administration.plugin.user.password", "koala");
     }
     
     private String getOsiamEndpoint() {
-        return getProperty("osiam.addon-selfadministration.plugin.osiam.endpoint", "http://localhost:8080/");
+        return getProperty("osiam.addon-self-administration.plugin.osiam.endpoint", "http://localhost:8080/");
     }
 
     private String getClientId() {
-        return getProperty("osiam.addon-selfadministration.plugin.osiam.client.id", "example-client");
+        return getProperty("osiam.addon-self-administration.plugin.osiam.client.id", "example-client");
     }
 
     private String getClientSecret() {
-        return getProperty("osiam.addon-selfadministration.plugin.osiam.client.secret", "secret");
+        return getProperty("osiam.addon-self-administration.plugin.osiam.client.secret", "secret");
     }
 }
