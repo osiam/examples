@@ -5,7 +5,7 @@
 
     <groupId>org.osiam</groupId>
     <artifactId>addon-self-administration-plugin-example</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <name>Example plugin implementation</name>
 
     <build>
