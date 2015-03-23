@@ -31,6 +31,24 @@
 
     <name>OSIAM Vert.x 3-legged-flow</name>
     <description>This example demonstrates 3-legged OAuth flow with a simple Vert.x webapp</description>
+    <url>https://github.com/osiam/examples/tree/master/vertx-3-legged-flow</url>
+    <licenses>
+        <license>
+            <name>The MIT License (MIT)</name>
+            <url>http://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>OSIAM Team</name>
+            <email>info@osiam.org</email>
+            <timezone>+1</timezone>
+            <organization>tarent solutions GmbH</organization>
+            <organizationUrl>http://www.tarent.de</organizationUrl>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,9 +64,26 @@
         <dependency>
             <groupId>org.osiam</groupId>
             <artifactId>connector4java</artifactId>
-            <version>1.4</version>
+            <version>1.5-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>osiam releases repo</id>
+            <url>https://maven-repo.evolvis.org/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>osiam snapshots repo</id>
+            <url>https://maven-repo.evolvis.org/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
