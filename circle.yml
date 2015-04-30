@@ -1,0 +1,4 @@
+test:
+  override:
+    - cd addon-self-administration-plugin && mvn clean verify
+    - cd vertx-3-legged-flow && mvn clean verify

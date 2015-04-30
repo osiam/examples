@@ -1,7 +1,0 @@
-language: java
-
-env:
-  - DIR=addon-self-administration-plugin
-  - DIR=vertx-3-legged-flow
-
-script: cd $DIR && mvn clean verify
