@@ -42,10 +42,10 @@ import org.osiam.resources.scim.User;
 public class PluginImpl implements CallbackPlugin {
 
     private static final String TEST_GROUP_NAME = "Test";
-    
+
     private OsiamConnector connector;
     private AccessToken accessToken;
-    
+
     public void performPreRegistrationActions(User user) throws CallbackException {
         if (user.getEmails() != null) for (Email email : user.getEmails()) {
             if (!email.getValue().endsWith(".org")) {
@@ -60,7 +60,7 @@ public class PluginImpl implements CallbackPlugin {
 
         Group testGroup = getTestGroup(connector);
         UpdateGroup uGroup = new UpdateGroup.Builder().addMember(user.getId()).build();
-        
+
         connector.updateGroup(testGroup.getId(), uGroup, getAccessToken());
     }
 
@@ -72,21 +72,21 @@ public class PluginImpl implements CallbackPlugin {
             Group testGroup = result.getResources().get(0);
             return testGroup;
         }
-        
+
         return createTestGroup(connector);
     }
 
     private Group createTestGroup(OsiamConnector connector) {
         Group testGroup = new Group.Builder(TEST_GROUP_NAME).build();
-        
+
         return connector.createGroup(testGroup, getAccessToken());
     }
 
     private AccessToken getAccessToken() {
         if(accessToken == null){
-            accessToken = getOsiamConnector().retrieveAccessToken(getUserName(), getUserPassword(), Scope.ALL);
+            accessToken = getOsiamConnector().retrieveAccessToken(getUserName(), getUserPassword(), Scope.ADMIN);
         }
-        
+
         return accessToken;
     }
 
@@ -98,14 +98,14 @@ public class PluginImpl implements CallbackPlugin {
                 .setClientSecret(getClientSecret())
                 .build();
         }
-        
+
         return connector;
     }
 
     private String getProperty(String key, String defaultValue) {
         return System.getProperty(key, defaultValue);
     }
-    
+
     private String getUserName() {
         return getProperty("osiam.addon-self-administration.plugin.user.name", "marissa");
     }
@@ -113,7 +113,7 @@ public class PluginImpl implements CallbackPlugin {
     private String getUserPassword() {
         return getProperty("osiam.addon-self-administration.plugin.user.password", "koala");
     }
-    
+
     private String getOsiamEndpoint() {
         return getProperty("osiam.addon-self-administration.plugin.osiam.endpoint", "http://localhost:8080/");
     }
