@@ -53,7 +53,7 @@ public class Main {
             public void handle(HttpServerRequest req) {
                 String path = req.path();
                 if (path.equals("/login")) {
-                    URI uri = oConnector.getAuthorizationUri(Scope.GET);
+                    URI uri = oConnector.getAuthorizationUri(Scope.ME);
                     req.response().setStatusCode(301).putHeader("Location", uri.toString()).end();
                 }
                 if (path.equals("/oauth2")) {
