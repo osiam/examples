@@ -42,8 +42,7 @@ public class Main {
         vertx.createHttpServer().requestHandler(new Handler<HttpServerRequest>() {
 
             OsiamConnector oConnector = new OsiamConnector.Builder()
-                    .setAuthServerEndpoint("http://localhost:8080/osiam-auth-server")
-                    .setResourceServerEndpoint("http://localhost:8080/osiam-resource-server")
+                    .setEndpoint("http://localhost:8080/osiam")
                     .setClientId("example-client")
                     .setClientSecret("secret")
                     .setClientRedirectUri("http://localhost:5000/oauth2")
@@ -61,7 +60,7 @@ public class Main {
                     if (multiMap.get("error") != null) {
                         req.response().setChunked(true).write("The user has denied your request").end();
                     } else {
-                        // the User has granted your rights to his ressources
+                        // the User has granted your rights to his resources
                         String code = multiMap.get("code");
                         AccessToken accessToken;
                         User user;
