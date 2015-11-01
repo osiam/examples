@@ -93,7 +93,7 @@ public class PluginImpl implements CallbackPlugin {
     private OsiamConnector getOsiamConnector() {
         if(connector == null){
             connector = new OsiamConnector.Builder()
-                .setEndpoint(getOsiamEndpoint())
+                .withEndpoint(getOsiamEndpoint())
                 .setClientId(getClientId())
                 .setClientSecret(getClientSecret())
                 .build();
