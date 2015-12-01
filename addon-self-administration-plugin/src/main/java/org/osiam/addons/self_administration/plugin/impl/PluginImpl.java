@@ -92,37 +92,43 @@ public class PluginImpl implements CallbackPlugin {
 
     private OsiamConnector getOsiamConnector() {
         if(connector == null){
-            connector = new OsiamConnector.Builder()
-                .withEndpoint(getOsiamEndpoint())
-                .setClientId(getClientId())
-                .setClientSecret(getClientSecret())
-                .build();
+            OsiamConnector.Builder builder = new OsiamConnector.Builder()
+                    .setClientId(getClientId())
+                    .setClientSecret(getClientSecret());
+
+            if (getOsiamVersion().startsWith("2")) {
+                builder.setEndpoint(getOsiamEndpoint());
+            } else {
+                builder.withEndpoint(getOsiamEndpoint());
+            }
+
+            connector = builder.build();
         }
 
         return connector;
     }
 
-    private String getProperty(String key, String defaultValue) {
-        return System.getProperty(key, defaultValue);
-    }
-
     private String getUserName() {
-        return getProperty("osiam.addon-self-administration.plugin.user.name", "admin");
+        return System.getProperty("osiam.addon-self-administration.plugin.user.name", "admin");
     }
 
     private String getUserPassword() {
-        return getProperty("osiam.addon-self-administration.plugin.user.password", "koala");
+        return System.getProperty("osiam.addon-self-administration.plugin.user.password", "koala");
     }
 
     private String getOsiamEndpoint() {
-        return getProperty("osiam.addon-self-administration.plugin.osiam.endpoint", "http://localhost:8080/osiam");
+        return System.getProperty("osiam.addon-self-administration.plugin.osiam.endpoint", "http://localhost:8080/osiam");
+    }
+
+    private String getOsiamVersion() {
+        return System.getProperty("osiam.addon-self-administration.plugin.osiam.version", "3");
     }
 
     private String getClientId() {
-        return getProperty("osiam.addon-self-administration.plugin.osiam.client.id", "example-client");
+        return System.getProperty("osiam.addon-self-administration.plugin.osiam.client.id", "example-client");
     }
 
     private String getClientSecret() {
-        return getProperty("osiam.addon-self-administration.plugin.osiam.client.secret", "secret");
+        return System.getProperty("osiam.addon-self-administration.plugin.osiam.client.secret", "secret");
     }
 }
