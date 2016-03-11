@@ -69,13 +69,13 @@
         <dependency>
             <groupId>org.osiam</groupId>
             <artifactId>addon-self-administration-plugin-api</artifactId>
-            <version>1.5-SNAPSHOT</version>
+            <version>1.5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.osiam</groupId>
             <artifactId>connector4java</artifactId>
-            <version>1.8-SNAPSHOT</version>
+            <version>1.8</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
